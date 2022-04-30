@@ -1,5 +1,5 @@
 import {View, Text, TextInput, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const UserInput = ({
@@ -11,13 +11,17 @@ const UserInput = ({
   setLoginData,
   value,
 }) => {
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
     <View style={styles.emailContainer}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
-        style={styles.emailInput}
+        style={[styles.input, {borderColor: isFocused ? 'darkblue' : '#ccc'}]}
         secureTextEntry={secureTextEntry}
         value={value}
+        onFocus={() => setIsFocused(!isFocused)}
+        onBlur={() => setIsFocused(false)}
         onChangeText={data => {
           setLoginData(data);
         }}
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
   emailContainer: {
     marginTop: 40,
   },
-  emailInput: {
+  input: {
     borderWidth: 1.5,
     borderColor: '#ccc',
     borderRadius: 10,
