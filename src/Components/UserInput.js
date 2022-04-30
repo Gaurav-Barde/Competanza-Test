@@ -20,6 +20,8 @@ const UserInput = ({
         style={[styles.input, {borderColor: isFocused ? 'darkblue' : '#ccc'}]}
         secureTextEntry={secureTextEntry}
         value={value}
+        spellCheck={false}
+        autoCorrect={false}
         onFocus={() => setIsFocused(!isFocused)}
         onBlur={() => setIsFocused(false)}
         onChangeText={data => {
@@ -27,7 +29,10 @@ const UserInput = ({
         }}
       />
       <EvilIcons
-        style={[styles.icon, {right: rightPosition}]}
+        style={[
+          styles.icon,
+          {right: rightPosition, color: isFocused ? 'blue' : 'black'},
+        ]}
         name={iconName}
         size={iconSize}
         color="black"
@@ -45,6 +50,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 10,
     paddingHorizontal: 15,
+    fontSize: 16,
   },
   label: {
     marginBottom: 10,
