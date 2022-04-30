@@ -228,9 +228,9 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
+            storeFile file('firebase.keystore')
             storePassword 'android'
-            keyAlias 'androiddebugkey'
+            keyAlias 'fbalias'
             keyPassword 'android'
         }
     }
