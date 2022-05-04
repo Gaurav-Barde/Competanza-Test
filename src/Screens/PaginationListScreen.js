@@ -64,7 +64,6 @@ const PaginationListScreen = () => {
       <FlatList
         data={dataSource}
         keyExtractor={(item, index) => index.toString()}
-        enableEmptySections={true}
         renderItem={listItem}
         ListFooterComponent={renderFooter}
       />
