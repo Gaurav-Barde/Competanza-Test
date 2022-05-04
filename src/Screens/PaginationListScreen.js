@@ -14,11 +14,8 @@ const PaginationListScreen = () => {
   const [dataSource, setDataSource] = useState([]);
   const [offset, setOffset] = useState(1);
 
-  useEffect(() => getData(), []);
-
   const getData = () => {
     setLoading(true);
-
     // Fetching Data
     fetch(`https://aboutreact.herokuapp.com/getpost.php?offset=${offset}`)
       .then(response => response.json())
@@ -33,6 +30,8 @@ const PaginationListScreen = () => {
         console.error(error);
       });
   };
+
+  useEffect(() => getData(), []);
 
   const renderFooter = () => {
     return (

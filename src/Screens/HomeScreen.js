@@ -1,14 +1,22 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {Login} from '../store/actions';
 
 const HomeScreen = () => {
   const token = useSelector(state => state.Reducers.authToken);
 
   const dispatch = useDispatch();
-  const signOut = () => {
+
+  const signOut = async () => {
     dispatch(Login(null));
+    try {
+      await GoogleSignin.signOut();
+      // this.setState({user: null}); // Remember to remove the user from your app's state as well
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

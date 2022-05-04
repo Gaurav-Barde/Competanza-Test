@@ -2,7 +2,6 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Login} from '../store/actions';
-
 import UserInput from '../Components/UserInput';
 
 // Google SignIn
@@ -30,7 +29,13 @@ const LoginScreen = () => {
 
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    console.log(idToken);
+
+    const usernameDetails = await auth().signInWithCredential(googleCredential);
+
+    dispatch(Login(usernameDetails.additionalUserInfo.profile.email));
+
+    console.log(usernameDetails.additionalUserInfo.profile);
+
     // Sign-in the user with the credential
     return auth().signInWithCredential(googleCredential);
   };

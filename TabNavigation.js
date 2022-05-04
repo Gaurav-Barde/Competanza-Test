@@ -12,7 +12,7 @@ const TabNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color, size}) => {
+        tabBarIcon: ({color, size}) => {
           let iconName;
 
           if (route.name === 'Dashboard') {
