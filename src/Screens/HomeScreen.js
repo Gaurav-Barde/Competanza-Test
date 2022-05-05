@@ -10,10 +10,9 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
 
   const signOut = async () => {
-    dispatch(Login(null));
     try {
       await GoogleSignin.signOut();
-      // this.setState({user: null}); // Remember to remove the user from your app's state as well
+      dispatch(Login(null));
     } catch (error) {
       console.error(error);
     }
