@@ -8,6 +8,8 @@ import {
 import React, {useState} from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
 
+import Button from '../Components/Button';
+
 const CaptureImageScreen = () => {
   const [image, setImage] = useState(
     'https://images.unsplash.com/photo-1464820453369-31d2c0b651af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=50',
@@ -45,16 +47,16 @@ const CaptureImageScreen = () => {
         </ImageBackground>
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => takePhotoFromCamera()}>
-          <Text style={styles.buttonText}>Take Photo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => chooseImageFromLibrary()}>
-          <Text style={styles.buttonText}>Choose Image from Library</Text>
-        </TouchableOpacity>
+        <Button
+          title="Take Photo"
+          pressHandler={takePhotoFromCamera}
+          backgroundColor="darkblue"
+        />
+        <Button
+          title="Choose Image from Library"
+          pressHandler={chooseImageFromLibrary}
+          backgroundColor="darkblue"
+        />
       </View>
     </View>
   );

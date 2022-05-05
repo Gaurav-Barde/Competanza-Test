@@ -2,7 +2,9 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {Login} from '../store/actions';
+
 import UserInput from '../Components/UserInput';
+import Button from '../Components/Button';
 
 // Google SignIn
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
@@ -60,15 +62,17 @@ const LoginScreen = () => {
         setLoginData={setPassword}
         value={password}
       />
-      <TouchableOpacity style={styles.signInButton} onPress={() => signIn()}>
-        <Text style={styles.signInText}>Sign In</Text>
-      </TouchableOpacity>
+      <Button
+        title="Sign In"
+        pressHandler={signIn}
+        backgroundColor="darkblue"
+      />
       <Text style={{textAlign: 'center'}}>OR</Text>
-      <TouchableOpacity
-        style={styles.signInButton}
-        onPress={() => googleSignIn()}>
-        <Text style={styles.signInText}>Sign in with Google</Text>
-      </TouchableOpacity>
+      <Button
+        title="Sign In with Google"
+        pressHandler={googleSignIn}
+        backgroundColor="#BE2320"
+      />
     </View>
   );
 };
@@ -85,21 +89,21 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     color: 'darkblue',
   },
-  signInButton: {
-    marginVertical: 20,
-    width: '100%',
-    paddingVertical: 15,
-    backgroundColor: 'darkblue',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  signInText: {
-    color: 'white',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    letterSpacing: 2,
-  },
+  // signInButton: {
+  //   marginVertical: 20,
+  //   width: '100%',
+  //   paddingVertical: 15,
+  //   backgroundColor: 'darkblue',
+  //   borderRadius: 10,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  // signInText: {
+  //   color: 'white',
+  //   fontWeight: 'bold',
+  //   textTransform: 'uppercase',
+  //   letterSpacing: 2,
+  // },
 });
 
 export default LoginScreen;
