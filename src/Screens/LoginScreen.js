@@ -89,21 +89,6 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     color: 'darkblue',
   },
-  // signInButton: {
-  //   marginVertical: 20,
-  //   width: '100%',
-  //   paddingVertical: 15,
-  //   backgroundColor: 'darkblue',
-  //   borderRadius: 10,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // signInText: {
-  //   color: 'white',
-  //   fontWeight: 'bold',
-  //   textTransform: 'uppercase',
-  //   letterSpacing: 2,
-  // },
 });
 
 export default LoginScreen;
