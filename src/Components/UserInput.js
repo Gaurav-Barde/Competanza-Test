@@ -17,7 +17,7 @@ const UserInput = ({
     <View style={styles.emailContainer}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
-        style={[styles.input, {borderColor: isFocused ? 'darkblue' : '#ccc'}]}
+        style={[styles.input, {borderColor: isFocused ? 'darkblue' : '#888'}]}
         secureTextEntry={secureTextEntry}
         value={value}
         spellCheck={false}
@@ -47,15 +47,16 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1.5,
-    borderColor: '#ccc',
     borderRadius: 10,
     paddingHorizontal: 15,
     fontSize: 16,
+    color: '#111',
   },
   label: {
     marginBottom: 10,
     fontWeight: '900',
     fontSize: 16,
+    color: '#888',
   },
   icon: {
     position: 'absolute',
