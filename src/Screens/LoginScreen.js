@@ -77,18 +77,25 @@ const LoginScreen = ({navigation}) => {
         pressHandler={signIn}
         backgroundColor="darkblue"
       />
-      <Text style={{textAlign: 'center'}}>Don`t Have an Account</Text>
-      <Button
-        title="Create an Account"
-        pressHandler={goToSignUpScreen}
-        backgroundColor="lightseagreen"
-      />
       <Text style={{textAlign: 'center'}}>OR</Text>
       <Button
         title="Sign In with Google"
         pressHandler={googleSignIn}
         backgroundColor="#BE2320"
       />
+      <View style={styles.signUpCTAContainer}>
+        <Text>Don`t Have an Account?</Text>
+        <Text
+          style={styles.signUpCTA}
+          onPress={() => navigation.navigate('SignUpScreen')}>
+          Sign Up
+        </Text>
+      </View>
+      {/* <Button
+        title="Create an Account"
+        pressHandler={goToSignUpScreen}
+        backgroundColor="lightseagreen"
+      /> */}
     </View>
   );
 };
@@ -104,6 +111,17 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: '900',
     color: 'darkblue',
+  },
+  signUpCTAContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  signUpCTA: {
+    marginLeft: 5,
+    color: '#0125FC',
+    fontWeight: 'bold',
   },
 });
 
