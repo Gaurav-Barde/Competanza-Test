@@ -9,20 +9,28 @@ import Button from '../Components/Button';
 // Google SignIn
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+import firebase from '@react-native-firebase/app';
 
 GoogleSignin.configure({
   webClientId:
     '886710162781-ecfe8818ifnvhorh7m7u9fkh53l291la.apps.googleusercontent.com',
 });
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
   const dispatch = useDispatch();
 
   const signIn = () => {
-    dispatch(Login(username, password));
+    firebase.auth().onAuthStateChanged(user => {
+      if (username === user.email) {
+        dispatch(Login(user.email));
+      } else {
+        alert('User Does not exist');
+      }
+      console.log(user);
+    });
   };
 
   const googleSignIn = async () => {
@@ -41,6 +49,8 @@ const LoginScreen = () => {
     // Sign-in the user with the credential
     return auth().signInWithCredential(googleCredential);
   };
+
+  const goToSignUpScreen = () => navigation.navigate('SignUpScreen');
 
   return (
     <View style={styles.container}>
@@ -66,6 +76,12 @@ const LoginScreen = () => {
         title="Sign In"
         pressHandler={signIn}
         backgroundColor="darkblue"
+      />
+      <Text style={{textAlign: 'center'}}>Don`t Have an Account</Text>
+      <Button
+        title="Create an Account"
+        pressHandler={goToSignUpScreen}
+        backgroundColor="lightseagreen"
       />
       <Text style={{textAlign: 'center'}}>OR</Text>
       <Button
